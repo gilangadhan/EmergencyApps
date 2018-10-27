@@ -7,12 +7,22 @@
     android:padding="8dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
     <android.support.design.widget.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/edtNomorPolisi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Masukkan Nomor Polisi" />
+</android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/edtNomorPolisi"
+            android:id="@+id/edtNomorPemadam"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Masukkan Nomor Polisi" />
+            android:hint="Masukkan Nomor Pemadam" />
     </android.support.design.widget.TextInputLayout>
 </LinearLayout>
