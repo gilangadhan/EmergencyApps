@@ -35,10 +35,7 @@ public class SettingActivity extends AppCompatActivity {
                     nomerPolisi.setError("Tidak boleh kosong");
                 }else {
                     //esekusi
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(SettingActivity.this);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("nomor_polisi", polisi);
-                    editor.apply();
+                    Helper.Save(SettingActivity.this, Helper.NOMOR_POLISI, polisi);
                 }
             }
         });
