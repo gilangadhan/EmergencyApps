@@ -42,6 +42,20 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        pemadam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String nomorPemadam = Helper.Read(MainActivity.this, Helper.NOMOR_PEMADAM);
+                if (nomorPemadam.isEmpty()){
+                    Toast.makeText(MainActivity.this, "Masukkan nomor di Setting menu", Toast.LENGTH_SHORT).show();
+                }else {
+                    String uriString = "tel:" +nomorPemadam;
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(uriString));
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     @Override
