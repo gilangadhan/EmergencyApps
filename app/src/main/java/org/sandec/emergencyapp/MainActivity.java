@@ -7,8 +7,8 @@ package org.sandec.emergencyapp;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +18,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     //kenalin
     ImageView polisi, ambulan, pemadam, basarnas;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +32,14 @@ public class MainActivity extends AppCompatActivity {
         polisi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String uriString = "tel:081904996393";
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(uriString));
-                startActivity(intent);
+                String nomorPolisi = Helper.Read(MainActivity.this, Helper.NOMOR_POLISI);
+                if (nomorPolisi.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Masukkan nomor di Setting menu", Toast.LENGTH_SHORT).show();
+                } else {
+                    String uriString = "tel:" +nomorPolisi;
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(uriString));
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -46,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.setting){
-           startActivity(new Intent(MainActivity.this, SettingActivity.class));
-        }else if (item.getItemId() == R.id.exit){
+        if (item.getItemId() == R.id.setting) {
+            startActivity(new Intent(MainActivity.this, SettingActivity.class));
+        } else if (item.getItemId() == R.id.exit) {
             finish();
         }
         return super.onOptionsItemSelected(item);
